@@ -1,19 +1,37 @@
-<input [(ngModel)]="email" type="email" placeholder="Correo"> 
-<input [(ngModel)]="password" type="password" placeholder="Contraseña"> 
-<button (click)="login()">Enviar</button>
 
-<input [(ngModel)]="name" type="text" placeholder="Nombre"> 
-<input [(ngModel)]="email" type="email" placeholder="Correo"> 
-<input [(ngModel)]="password" type="password" placeholder="Contraseña"> 
-<input [(ngModel)]="passwordRp" type="password" placeholder="Repetir Contraseña"> 
-<button (click)="register()">Enviar</button>
 
-<div>
+
+<!--<input [(ngModel)]="email" type="email" placeholder="Correo"> 
+<input [(ngModel)]="password" type="password" placeholder="Contraseña"> 
+<button (click)="register()">Enviar</button>-->
+
+<div class="content">
     <div class="container">
         <div class="row">
-            <div class="col-6 mx-auto">
-            <img src="assets/img/logo_live_online.png" alt="">
+            <div class="col-3"></div>
+            <div class="col-6" style="text-align: center">
+                <img src="assets/img/logo_live_online.png" alt="" class="img-fluid logo-login mx-auto">
+                <h4>Iniciar Sesión</h4>
+                <small>Ingresa con tu cuenta de Facebook o con tu email. No tienes cuenta aún? <a href="">Click aquí</a></small>
+                <div class="card mx-auto">
+                    <div class="card-body">
+                        <input [(ngModel)]="email" type="email" placeholder="Correo" class="w-100"> 
+                        <input [(ngModel)]="password" type="password" placeholder="Contraseña" class="w-100"> 
+                        <input [(ngModel)]="name" type="text" placeholder="Nombre" class="w-100">
+                        <div class="rembemberMe">
+                            <small><input type="checkbox">Recordarme</small><br>
+                            <small><input type="checkbox">Recordar mi contraseña</small><br>
+                            <small><input type="checkbox">Ingresar automaticamente</small><br>
+                            <small><a href="">Olvidaste tu contraseña</a></small>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="login()" class="btn">Iniciar Sesión</button>
+                <button (click)="register()"  class="btn">Registrar</button><br>
+                <button (click)="checkSession()"  class="btn">Loggear</button>
+                
             </div>
         </div>
     </div>
 </div>
+

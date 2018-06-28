@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 //import { UserService } from '../user.service';
 import { UserFirebaseService } from '../user-firebase.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,7 @@ export class HomeComponent implements OnInit {
   public isCollapsed = false;
   //modalService: any;
 
-  constructor( public userFirebaseService: UserFirebaseService, private modalService: NgbModal) { 
+  constructor( public userFirebaseService: UserFirebaseService, private modalService: NgbModal , public authenticationService : AuthenticationService, public router: Router) { 
     //this.users = this.userService.getUsers();
     //console.log(this.users);
     
@@ -27,11 +29,21 @@ export class HomeComponent implements OnInit {
     });
     
     console.log(this.users);
+
+    authenticationService.getStatus().subscribe((status)=>{
+      console.log('status',status);
+      if(status == null){
+        this.router.navigate(['login']);
+      }else{
+        
+      }
+    });
   }
     printUser(userId){
       const stream = this.userFirebaseService.getUserById(userId);
       stream.valueChanges().subscribe((result) =>{
       console.log(result);
+      this.router.navigate(['/conversation/'+ userId]);
   
       });
     }
@@ -98,6 +110,10 @@ export class HomeComponent implements OnInit {
   
     openVerticallyCentered(content) {
       this.modalService.open(content, { centered: true });
+    }
+
+    logOut(){
+      this.authenticationService.logOut();
     }
 
   ngOnInit() {
