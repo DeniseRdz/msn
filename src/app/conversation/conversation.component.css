@@ -91,6 +91,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .txts{
     height: 54vh;
+    overflow-y: scroll;
 }
 
 textarea{

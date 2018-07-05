@@ -22,16 +22,16 @@
     </div>
     <div class="row">
       <div class="col-12 search-div">
-        <input type="text" class="form-group search" placeholder="Buscar contacto">
+        <input type="text" class="form-group search" placeholder="Buscar contacto" [(ngModel)]='query'>
         <img src="assets/img/logo_live_add.png" class="img-fluid logo-search" alt="" (click)="openVerticallyCentered(content)"
         [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" >
       </div>
     </div>
     <div class="row">
-      <div class="col-12 amigos">
-          <h5>Amigos (  /  )</h5>
-        <h6 (click)="printUser(u.user_id)" *ngFor= "let u of users"><img class="vineta-online" src="assets/img/logo_live_online.png" alt=""> {{u.nick}}  <small>-{{u.subnick}}</small> </h6>
-      </div>
+      <div class="col-12 amigos" *ngIf="users">
+          <h5>Amigos ({{users.length}}/{{users.length}})</h5>
+          <app-friend *ngFor= "let u of users" [user_id]="u.user_id"></app-friend>
+        </div>
     </div>
   </div>
 </div>

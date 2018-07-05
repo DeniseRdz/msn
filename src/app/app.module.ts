@@ -18,13 +18,17 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
+
+import { SearchPipe } from './pipes/search';
+import { FriendComponent } from './friend/friend.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'conversation/:userId', component: ConversationComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'conversation/:userId', component: ConversationComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -33,7 +37,9 @@ const appRoutes: Routes = [
     HomeComponent,
     ConversationComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchPipe,
+    FriendComponent
   ],
   imports: [
     BrowserModule,

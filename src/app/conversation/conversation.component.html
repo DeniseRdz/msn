@@ -1,3 +1,6 @@
+<!--{{timestamp | date: 'medium'}}
+{{price | number: '1.2-2'}}
+{{user | json}}-->
 <div class="cont">
   <div class="container-fluid">
     <div class="row">
@@ -19,9 +22,13 @@
               <small>(Online)</small>
               <hr>
           </div>
-          <div class="w-100 txts">
+          <div class="w-100 txts" >
+            <div class="message" *ngFor= "let message of conversation">
+              {{getNickById(message.sender)}} dice: {{message.content}}
+            </div>
+            <!--<textarea name="" id="" cols="30" rows="10" [(ngModel)]="message" (keyup.enter)="sendMessage()"></textarea>
             <small>Usuarios</small> <br>
-            <small>Texto</small>
+            <small>Texto</small>-->
           </div>
       </div>
     </div>
@@ -32,7 +39,7 @@
       </div>    
                 
       <div class="col-10">
-        <textarea placeholder="Text..." class="w-100"></textarea>
+        <textarea placeholder="Text..." class="w-100" [(ngModel)]="message" (keyup.enter)="sendMessage()"></textarea>
         <div class="w-100 h">
             
             <div class="btn-group mr-3">

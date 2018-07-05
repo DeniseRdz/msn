@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   users : any;
   closeResult: string;
   public isCollapsed = false;
+
+  query : string;
+  
   //modalService: any;
 
   constructor( public userFirebaseService: UserFirebaseService, private modalService: NgbModal , public authenticationService : AuthenticationService, public router: Router) { 

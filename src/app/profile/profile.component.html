@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="container-fluid">
+   <div class="container-fluid">
       <div class="row">
           <div class="col-12">
               <nav class="nav bar-nav">
@@ -11,7 +11,9 @@
           </div>
         </div>
     <div class="row  mh-100" >
-      <div class="col-1"></div>
+      <div class="col-1">
+        
+      </div>
       <div class="col-3">
           <img src="assets/img/logo_live_online.png" alt="" class="img-fluid logo-login mx-auto">
           <form>
@@ -33,6 +35,11 @@
          <button class="w-100">Guardar</button>
       </div>
       
+      
+      
     </div>
   </div>
 </div>
+
+<h1 (click)="printUser(u.user_id)" *ngFor= "let u of users">1111 {{u.nick}}  <small>-{{u.subnick}}</small> </h1>
+ 
